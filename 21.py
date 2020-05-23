@@ -19,7 +19,7 @@ HOOKER_PRICE = 200
 
 def main():
     """
-    splitting cards, payout
+    asks to buy in, plays game as long as user confirms, asks to rebuy if balance = 0
     """
     intro()
     buyin = pay('buyin', 0)
@@ -39,6 +39,9 @@ def main():
 
 
 def game(balance):
+    '''
+    runs one game of blackjack
+    '''
     deck = []
     for card in DECK:
         deck.append(card)
@@ -298,6 +301,9 @@ def ace_1_or_11(hand):
         return True
 
 def num_of_aces(hand):
+    '''
+    counts number of aces in hand and returns number
+    '''
     first = hand.count("As")
     second = hand.count("Ad")
     third = hand.count("Ah")
