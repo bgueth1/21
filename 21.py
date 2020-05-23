@@ -2,7 +2,7 @@ import random
 from simpleimage import SimpleImage
 
 TABLE_MIN = 10
-TABLE_MAX = 100000
+TABLE_MAX = 1000
 
 DECK = ["2c", "3c", "4c", "5c", "6c", "7c", "8c", "9c", "Tc", "Jc", "Qc", "Kc", "Ac", "2h", "3h", "4h", "5h", "6h",
         "7h", "8h", "9h", "Th", "Jh", "Qh", "Kh", "Ah", "2d", "3d", "4d", "5d", "6d", "7d", "8d", "9d", "Td", "Jd",
@@ -39,9 +39,6 @@ def main():
 
 
 def game(balance):
-    '''
-    runs one game of blackjack
-    '''
     deck = []
     for card in DECK:
         deck.append(card)
@@ -75,6 +72,7 @@ def pay(usage, balance):
     """
     pay money, types: 'buyin' and 'bet', with restrictions for balance, TABLE_MIN & MAX
     """
+    amount = 0
     while True:
         try:
             amount = int(input('\nEnter ' + usage + ' amount: $'))
@@ -301,9 +299,6 @@ def ace_1_or_11(hand):
         return True
 
 def num_of_aces(hand):
-    '''
-    counts number of aces in hand and returns number
-    '''
     first = hand.count("As")
     second = hand.count("Ad")
     third = hand.count("Ah")
@@ -346,7 +341,7 @@ def print_result(profit, balance):
 
 def ask_rebuy():
     prompt = input('Do you want to re-buy? (y/n): ')
-    while prompt != 'y' and 'n':
+    while prompt != 'y' and prompt != 'n':
         prompt = input('Do you want to re-buy? (y/n): ')
     if prompt == 'y':
         return True
